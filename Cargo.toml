@@ -1,0 +1,33 @@
+[workspace]
+members = [
+    "src/app",
+    "src/front",
+    "src/server",
+]
+
+# need to be applied only to wasm build
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 'z'
+
+[workspace.dependencies]
+leptos = { version = "0.2", default-features = false, features = ["stable"] }
+leptos_meta = { version = "0.2", default-features = false }
+leptos_router = { version = "0.2", default-features = false, features = [
+  "stable",
+] }
+leptos_dom = { version = "0.2", default-features = false }
+leptos_actix = { version = "0.2" }
+
+# See https://github.com/akesson/cargo-leptos for documentation of all the parameters.
+
+# A leptos project defines which workspace members
+# that are used together frontend (lib) & server (bin)
+[[workspace.metadata.leptos]]
+name = "lekiu"
+bin-package = "server-package"
+lib-package = "front-package"
+assets-dir = "src/assets"
+style-file = "src/css/main.scss"
+site-root = "target/site/src"
