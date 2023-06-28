@@ -4,6 +4,7 @@ members = [
     "src/front",
     "src/server",
 ]
+resolver = "2"
 
 # need to be applied only to wasm build
 [profile.release]
@@ -12,15 +13,11 @@ lto = true
 opt-level = 'z'
 
 [workspace.dependencies]
-leptos = { version = "0.2", default-features = false, features = ["stable"] }
-leptos_meta = { version = "0.2", default-features = false }
-leptos_router = { version = "0.2", default-features = false, features = [
-  "stable",
-] }
-leptos_dom = { version = "0.2", default-features = false }
-leptos_actix = { version = "0.2" }
-
-# See https://github.com/akesson/cargo-leptos for documentation of all the parameters.
+leptos = { git = "https://github.com/leptos-rs/leptos", branch = "main" }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos", branch = "main" }
+leptos_router = { git = "https://github.com/leptos-rs/leptos", branch = "main" }
+leptos_dom = { git = "https://github.com/leptos-rs/leptos", branch = "main" }
+leptos_actix = { git = "https://github.com/leptos-rs/leptos", branch = "main" }
 
 # A leptos project defines which workspace members
 # that are used together frontend (lib) & server (bin)
@@ -31,3 +28,8 @@ lib-package = "front-package"
 assets-dir = "src/assets"
 style-file = "src/css/main.scss"
 site-root = "target/site/src"
+site-addr = "127.0.0.1:3000"
+tailwind-input-file = "./input.css"
+tailwind-config-file = "./tailwind.config.js"
+
+
